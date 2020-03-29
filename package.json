@@ -1,0 +1,45 @@
+{
+  "name": "gameserver",
+  "version": "1.0.0",
+  "description": "game server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "watch": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/praburocking/gameserver.git"
+  },
+  "author": "prabu mohan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/praburocking/gameserver/issues"
+  },
+  "homepage": "https://github.com/praburocking/gameserver#readme",
+  "dependencies": {
+    "async": "^3.1.1",
+    "axios": "^0.19.2",
+    "body-parser": "^1.19.0",
+    "connect-busboy": "0.0.2",
+    "cors": "^2.8.5",
+    "cron": "^1.8.2",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.1.6",
+    "gzip": "^0.1.0",
+    "jsonwebtoken": "^8.5.1",
+    "md5": "^2.2.1",
+    "moment": "^2.24.0",
+    "mongoose": "^5.8.9",
+    "mongoose-unique-validator": "^2.0.3",
+    "multer": "^1.4.2",
+    "nodemailer": "^6.4.2",
+    "shelljs": "^0.8.3",
+    "stripe": "^8.7.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
