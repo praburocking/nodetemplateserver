@@ -12,3 +12,6 @@ the server is divided in two parts
 the services part contains the essential services for an app server and app part you can write your app.
 
 For backEnd we are using MangoDB and for authorization we are using token system where a token is sent in header for every request to identify the user.
+
+for more Info please look into the wiki tab.
+we are also encourage you to contribute to this project to make something good for nodejs developer community. 
