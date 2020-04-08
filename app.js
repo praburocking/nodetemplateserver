@@ -6,10 +6,8 @@ const fileupload = require('express-fileupload')
 const authorization=require('./services/authorization/core/authorization')
 //controllers
 const signupRouter = require('./services/authorization/core/controllers/signup')
-
 const loginRouter=require('./services/authorization/core/controllers/login')
 const logoutRouter=require('./services/authorization/core/controllers/logout')
-
 const paymentRouter=require('./services/payment/core/controllers/payments')
 const forgotRouter=require('./services/authorization/core/controllers/forgotPasword')
 const verifyUserRouter=require('./services/authorization/core/controllers/verifyUser')
@@ -17,8 +15,6 @@ const fileRouter=require('./app/controllers/fileRouter')
 const File=require('./app/models/uploads')
 //const busboy = require('connect-busboy');
 
-
-//logs req and response
 
 const app = express()
 app.use(
@@ -33,9 +29,7 @@ app.use(
 
 app.use(bodyParser.json())
 app.use(cors())
-// app.use(busboy({
-//   highWaterMark: 2 * 1024 * 1024, 
-// })); 
+
 
 app.use('/api/',fileupload());
 app.use('/api/',authorization);
