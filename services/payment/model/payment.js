@@ -1,21 +1,16 @@
 const mongoose = require('mongoose')
-const config=require('../util/config')
+const settings=require('../../../services')
 const uniqueValidator = require('mongoose-unique-validator')
 mongoose.set('useFindAndModify', false)
 
 
-console.log("config =>",config);
-let url=config.MONGODB_URL;
-console.log("mongodb url from env file=> ",url);
-
+let url=settings.MONGODB_URL;
 
 mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }).then
 (()=>{console.log("mangodb connected")}).catch((ex)=>{console.log("Exception =>",ex)})
 
 
-
-const paymentSchema=new mongoose.Schema({
-    
+const paymentSchema=new mongoose.Schema({  
     user_id:{type:String,required:true,minlength:20},
     stripe_client_secret:{type:String,unique:true},
     stripe_pay_intent_id:{type:String,unique:true},
@@ -25,7 +20,6 @@ const paymentSchema=new mongoose.Schema({
     plan:{type:String},
   })
  
-
   paymentSchema.plugin(uniqueValidator)
 
   paymentSchema.set('toJSON',{

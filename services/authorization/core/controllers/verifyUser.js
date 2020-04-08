@@ -1,7 +1,7 @@
 
 const User = require('../../model/user')
 const utils =require('../utils')
-const config=require('../../util/config')
+const config=require('../../../../settings')
 const verifyUserRouter = require('express').Router()
 const md5=require('md5')
 

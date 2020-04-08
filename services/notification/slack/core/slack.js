@@ -1,4 +1,4 @@
-const config=require('../util/config')
+const settings=require('../../../../settings')
 const axios=require('axios')
 
 
@@ -55,7 +55,7 @@ await sendnotification(userAccountNotification);
 const sendnotification=async (data)=>
 {
 
-   const res=await axios.post(config.SLACK_URL,data);
+   const res=await axios.post(settings.SLACK_URL,data);
   
   
    console.log("slack res",res)

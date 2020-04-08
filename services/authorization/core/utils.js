@@ -5,7 +5,7 @@ const jwt=require('jsonwebtoken')
 const Auth=require('../model/authorization')
 const sendmail=require('../../notification/mail/mail')
 const scheduler=require('../../scheduler/core/scheduler');
-const config =require('../util/config')
+const settings =require('../../../settings')
 
   const login=async (data,fromSignup)=>
 {
@@ -15,7 +15,7 @@ const config =require('../util/config')
           if( !user.isVerified)
             {
               let token= await issueToken(user,60*15,"verifyUser",true);
-              const link=config.SERVER_URL+"/verifyUser?token="+token.key;
+              const link=settings.SERVER_URL+"/verifyUser?token="+token.key;
               verifyUserMail(user.email, user.name,link);
             }
 
@@ -90,13 +90,13 @@ return token;
 const verifyToken=async (token,action,isRemove)=>
 {
 
-  const header=config.SECURITY_HEADER
+  const header=settings.SECURITY_HEADER
   let authData= await Auth.find({key:token})
   authData=authData[0];
   if(authData)
   {
   token=header+"."+authData.payload+"."+token
-  token=jwt.verify(token,config.SECRET)
+  token=jwt.verify(token,settings.SECRET)
   if(token && token.id && token.action===action )
   {
     console.log("verify token ",(token.issueAt+token.expiry) )

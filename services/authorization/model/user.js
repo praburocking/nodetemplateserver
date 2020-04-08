@@ -1,14 +1,10 @@
 const mongoose = require('mongoose')
-const config=require('../util/config')
+const settings=require('../../../settings')
 const uniqueValidator = require('mongoose-unique-validator')
 mongoose.set('useFindAndModify', false)
 
 
-console.log("config =>",config);
-let url=config.MONGODB_URL;
-console.log("mongodb url from env file=> ",url);
-
-
+let url=settings.MONGODB_URL;
 mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }).then
 (()=>{console.log("mangodb connected")}).catch((ex)=>{console.log("Exception =>",ex)})
 
@@ -18,8 +14,7 @@ const userSchema=new mongoose.Schema({
     name:{type:String,required:true},
     email:{type:String,unique:true,required:true},
     passwordHash:{type:String,required:true,minlength:8},
-    isVerified:{type:Boolean,required:true},
-    maxFileSize:{type:Number,required:true}
+    isVerified:{type:Boolean,required:true}
   })
 
 

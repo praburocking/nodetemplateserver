@@ -1,7 +1,7 @@
 const forgotPassRouter = require('express').Router()
 const User = require('../../model/user')
 const utils =require('../utils')
-const config=require('../../util/config')
+const settings=require('../../../../settings')
 const resetPasswordRouter = require('express').Router()
 const md5=require('md5')
 
@@ -19,7 +19,7 @@ forgotPassRouter.post('/',async (req,res)=>{
         {
             let token= await utils.issueToken(user,60*15,"revivePassword")
             console.log("token",token);
-            const link=config.SERVER_URL+"/resetpassword?token="+token.key;
+            const link=settings.SERVER_URL+"/resetpassword?token="+token.key;
             utils.forgotPasswordMail(user.email, user.name,link);
             res.status(200).json({message:"password recovery key is sent to your mail"});
 

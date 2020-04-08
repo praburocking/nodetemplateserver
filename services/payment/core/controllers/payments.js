@@ -1,6 +1,6 @@
 const paymentRouter = require('express').Router()
-const config=require('../../util/config')
-const stripe=require('stripe')(config.PAYMENT_SECRET)
+const settings=require('../../../../settings')
+const stripe=require('stripe')(settings.PAYMENT_SECRET)
 const Payment=require("../../model/payment")
 
 
@@ -41,7 +41,7 @@ catch(exp)
 paymentRouter.post('/stripe/webhook',async(req,res)=>
 {
     try{
-        if (config.STRIPE_WEBHOOK_SECRET) {
+        if (settings.STRIPE_WEBHOOK_SECRET) {
             // Retrieve the event by verifying the signature using the raw body and secret.
             let event;
             let signature = req.headers["stripe-signature"];
@@ -49,7 +49,7 @@ paymentRouter.post('/stripe/webhook',async(req,res)=>
                 event = stripe.webhooks.constructEvent(
                     req.rawBody,
                     signature,
-                   config.STRIPE_WEBHOOK_SECRET
+                   settings.STRIPE_WEBHOOK_SECRET
                   );
                  let eventType = event.type;
                   if(eventType==="payment_intent.succeeded")

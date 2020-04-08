@@ -1,11 +1,11 @@
 const mongoose = require('mongoose')
-const config=require('../util/config')
+const settings=require('../../../settings')
 const uniqueValidator = require('mongoose-unique-validator')
 mongoose.set('useFindAndModify', false)
 
 
 
-mongoose.connect(config.MONGODB_URL, {useNewUrlParser: true, useUnifiedTopology: true }).then
+mongoose.connect(settings.MONGODB_URL, {useNewUrlParser: true, useUnifiedTopology: true }).then
     (()=>{console.log("mangodb connected")}).catch((ex)=>{console.log("Exception =>",ex); process.exit(1)})
 
 const authSchema=new mongoose.Schema({

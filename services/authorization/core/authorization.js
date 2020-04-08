@@ -1,5 +1,5 @@
 const jwt=require('jsonwebtoken')
-const config =require('../util/config')
+const settings =require('../../../settings')
 const url = require('url');
 const auth =require('../model/authorization')
  const utils=require('./utils')
@@ -9,7 +9,7 @@ const auth =require('../model/authorization')
 const authorization= async (request,response,next)=>
 {
     console.log("url" ,url.parse(request.url).pathname);
-    if(!config.excludeUrl.includes(url.parse(request.url).pathname)){
+    if(!settings.excludeUrl.includes(url.parse(request.url).pathname)){
     const authorization=request.get("authorization");
     let token=null;
     if(authorization&& authorization.toLowerCase().startsWith('bearer ') )
